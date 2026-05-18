@@ -1,0 +1,38 @@
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:DesktopGL
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+
+#---------------------------------- Content ---------------------------------#
+
+#begin Font/Main.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/build:Font/Main.spritefont
+
+#begin Textures/UI/titletext.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/titletext.png
+
+#begin Textures/UI/Buttons/left.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/left.png
+
+#begin Textures/UI/Buttons/right.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/right.png
+
+#begin Textures/UI/Buttons/button_main_3x1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/button_main_3x1.png
