@@ -6,15 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Remove="AnimationData.cs" />
-        <Compile Remove="CharacterData.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\LSCore\LSCore.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.*" />
     </ItemGroup>
 </Project>
+

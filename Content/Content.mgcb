@@ -27,12 +27,72 @@
 /processor:TextureProcessor
 /build:Textures/UI/Buttons/left.png
 
+#begin Textures/UI/Buttons/left_hovered.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/left_hovered.png
+
+#begin Textures/UI/Buttons/left_pressed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/left_pressed.png
+
 #begin Textures/UI/Buttons/right.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /build:Textures/UI/Buttons/right.png
 
+#begin Textures/UI/Buttons/right_hovered.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/right_hovered.png
+
+#begin Textures/UI/Buttons/right_pressed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/right_pressed.png
+
 #begin Textures/UI/Buttons/button_main_3x1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /build:Textures/UI/Buttons/button_main_3x1.png
+
+#begin Textures/UI/Buttons/button_main_3x1_hovered.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/button_main_3x1_hovered.png
+
+#begin Textures/UI/Buttons/button_main_3x1_pressed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/button_main_3x1_pressed.png
+
+#begin Textures/UI/Buttons/button_main_1x1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/button_main_1x1.png
+
+#begin Textures/UI/Buttons/button_main_1x1_hovered.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/button_main_1x1_hovered.png
+
+#begin Textures/UI/Buttons/button_main_1x1_pressed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/button_main_1x1_pressed.png
+
+#begin Textures/Characters/Player/Albo/albo.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/Characters/Player/Albo/albo.png
+
+#begin Textures/Characters/Player/Aurelia/aurelia.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/Characters/Player/Aurelia/aurelia.png
+
+#begin Textures/Characters/Player/Nightingale/nightingale.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/Characters/Player/Nightingale/nightingale.png

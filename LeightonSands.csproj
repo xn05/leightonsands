@@ -6,6 +6,8 @@
         <PublishReadyToRun>false</PublishReadyToRun>
         <TieredCompilation>false</TieredCompilation>
         <Nullable>enable</Nullable>
+        <DebugType>None</DebugType>
+        <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
     </PropertyGroup>
     <PropertyGroup>
         <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -24,6 +26,16 @@
         </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
+        <Compile Remove="LSUI\**\*.cs" />
+        <Compile Remove="LSCore\**\*.cs" />
+        <Compile Remove="CharacterData.cs" />
+        <Compile Remove="AnimationData.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="LSCore\LSCore.csproj" />
+        <ProjectReference Include="LSUI\LSUI.csproj" />
+    </ItemGroup>
+    <ItemGroup>
         <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.*"/>
         <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.*"/>
     </ItemGroup>
@@ -35,8 +47,15 @@
       <None Update="Content\Characters\**\*.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="Content\Characters\**\*.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+      
+      
     </ItemGroup>
+    <Target Name="TrimRuntimeFolders" AfterTargets="Build" Condition="Exists('$(OutputPath)runtimes')">
+        <ItemGroup>
+            <RuntimeDirs Include="$(OutputPath)runtimes\*/" />
+            <RuntimeDirs Remove="$(OutputPath)runtimes\win-x64/" />
+            <RuntimeDirs Remove="$(OutputPath)runtimes\win-arm64/" />
+        </ItemGroup>
+        <RemoveDir Directories="@(RuntimeDirs)" />
+    </Target>
 </Project>

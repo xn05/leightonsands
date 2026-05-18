@@ -1,7 +1,7 @@
 ﻿{
-  "id": "anim.albo_idle",
+  "id": "anim.nightingale_idle",
   "kind": "animation",
-  "texture": "Characters/Player/Albo/albo.png",
+  "texture": "Characters/Player/Nightingale/nightingale.png",
   "grid": { "columns": 12, "rows": 8 },
   "fps": 4,
   "index_base": 1,
@@ -12,4 +12,3 @@
     "forward": [2, 2, 2, 2, 2, 2, 4]
   }
 }
-

@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="LeightonSands.csproj" />
+  <Project Path="LSUI/LSUI.csproj" />
+  <Project Path="LSCore/LSCore.csproj" />
 </Solution>

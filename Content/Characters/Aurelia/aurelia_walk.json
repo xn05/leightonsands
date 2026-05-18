@@ -1,7 +1,7 @@
 ﻿{
-  "id": "anim.albo_walk",
+  "id": "anim.aurelia_walk",
   "kind": "animation",
-  "texture": "Characters/Player/Albo/albo.png",
+  "texture": "Characters/Player/Aurelia/aurelia.png",
   "grid": { "columns": 12, "rows": 8 },
   "fps": 8,
   "index_base": 1,
@@ -12,4 +12,3 @@
     "forward": [1, 2, 3]
   }
 }
-

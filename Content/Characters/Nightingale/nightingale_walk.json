@@ -1,8 +1,8 @@
 ﻿{
-  "id": "anim.albo_walk",
+  "id": "anim.nightingale_walk",
   "kind": "animation",
-  "texture": "Characters/Player/Albo/albo.png",
-  "grid": { "columns": 12, "rows": 8 },
+  "texture": "Characters/Player/Nightingale/nightingale.png",
+  "grid": { "columns": 12, "rows": 8 }, 
   "fps": 8,
   "index_base": 1,
   "sequences": {
@@ -12,4 +12,3 @@
     "forward": [1, 2, 3]
   }
 }
-
