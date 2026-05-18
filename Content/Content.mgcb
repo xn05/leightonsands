@@ -17,10 +17,10 @@
 /processor:FontDescriptionProcessor
 /build:Font/Main.spritefont
 
-#begin Textures/UI/titletext.png
+#begin Textures/UI/title.png
 /importer:TextureImporter
 /processor:TextureProcessor
-/build:Textures/UI/titletext.png
+/build:Textures/UI/title.png
 
 #begin Textures/UI/Buttons/left.png
 /importer:TextureImporter
@@ -67,6 +67,21 @@
 /processor:TextureProcessor
 /build:Textures/UI/Buttons/button_main_3x1_pressed.png
 
+#begin Textures/UI/Buttons/button_main_2x1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/button_main_2x1.png
+
+#begin Textures/UI/Buttons/button_main_2x1_hovered.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/button_main_2x1_hovered.png
+
+#begin Textures/UI/Buttons/button_main_2x1_pressed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/button_main_2x1_pressed.png
+
 #begin Textures/UI/Buttons/button_main_1x1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -96,3 +111,13 @@
 /importer:TextureImporter
 /processor:TextureProcessor
 /build:Textures/Characters/Player/Nightingale/nightingale.png
+
+#begin Textures/UI/Buttons/toggle_main_unchecked.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/toggle_main_unchecked.png
+
+#begin Textures/UI/Buttons/toggle_main_checked.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/UI/Buttons/toggle_main_checked.png

@@ -73,7 +73,7 @@ public sealed class TitleScreen
         _contentRootDirectory = content.RootDirectory;
 
         _uiFont = content.Load<SpriteFont>("Font/Main");
-        _titleTexture = content.Load<Texture2D>("Textures/UI/titletext");
+        _titleTexture = content.Load<Texture2D>("Textures/UI/title");
 
         LoadButtons(content);
         LoadCharacters();
