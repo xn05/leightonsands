@@ -31,29 +31,29 @@
  </layer>
  <objectgroup id="4" name="Object Layer 1">
   <object id="1" x="289.75" y="208.5" width="13" height="16"/>
-  <object id="2" x="271.5" y="275.75" width="16.25" height="11.75"/>
+  <object id="2" x="273.5" y="277.417" width="11.9167" height="10.0833"/>
   <object id="3" x="224.5" y="176" width="12.25" height="15.25"/>
-  <object id="5" x="227.25" y="32" width="10.75" height="16.5"/>
-  <object id="6" x="434.75" y="48.75" width="11.25" height="14.5"/>
+  <object id="5" x="228" y="32" width="8.875" height="15.625"/>
+  <object id="6" x="435.75" y="48.75" width="10.25" height="14.5"/>
   <object id="7" x="256.333" y="191.333" width="64" height="16.6667"/>
   <object id="8" x="304" y="207.667" width="16.3333" height="93.6667"/>
-  <object id="9" x="159.333" y="287.667" width="145" height="15"/>
+  <object id="9" x="159.333" y="289.042" width="145" height="13.625"/>
   <object id="10" x="158.667" y="191" width="16.3333" height="109.333"/>
   <object id="11" x="174.333" y="190" width="49.3333" height="16.6667"/>
   <object id="12" x="206.667" y="127.667" width="17" height="64.6667"/>
-  <object id="13" x="14.75" y="127.25" width="191.75" height="15.75"/>
-  <object id="14" x="13" y="93.75" width="18.5" height="48.75"/>
-  <object id="15" x="27.75" y="93" width="194" height="18.25"/>
-  <object id="16" x="206.25" y="14.5" width="17" height="96.75"/>
+  <object id="13" x="17.375" y="128.5" width="189.125" height="14.5"/>
+  <object id="14" x="16.5" y="96.375" width="13.875" height="46.125"/>
+  <object id="15" x="27.75" y="96.125" width="194" height="15.125"/>
+  <object id="16" x="206.25" y="14.5" width="16.625" height="96.75"/>
   <object id="17" x="221.75" y="13.75" width="50.25" height="17.5"/>
-  <object id="18" x="256.333" y="31.3333" width="208.333" height="16.3333"/>
+  <object id="18" x="257.333" y="31.3333" width="207.333" height="15.7083"/>
   <object id="19" x="448.667" y="46.6667" width="16.6667" height="27"/>
-  <object id="20" x="432.333" y="64.3333" width="16" height="201"/>
+  <object id="20" x="433.208" y="65.5833" width="15.125" height="199.75"/>
   <object id="21" x="432.333" y="264.667" width="16.6667" height="35"/>
-  <object id="22" x="397.333" y="286.667" width="36.6667" height="18"/>
-  <object id="23" x="398.667" y="63.6667" width="15.6667" height="227.333"/>
+  <object id="22" x="397.333" y="288.167" width="36.6667" height="16.5"/>
+  <object id="23" x="398.667" y="65.6667" width="15.6667" height="225.333"/>
   <object id="24" x="272.667" y="65.1667" width="126.667" height="14.8333"/>
-  <object id="25" x="256.667" y="65" width="16" height="142.667"/>
+  <object id="25" x="256.792" y="65" width="15.875" height="142.667"/>
  </objectgroup>
  <layer id="3" name="Tile Layer 3" width="30" height="20">
   <data encoding="csv">
