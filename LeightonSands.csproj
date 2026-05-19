@@ -52,16 +52,13 @@
       <Folder Include="Content\Characters\Albo\" />
     </ItemGroup>
     <ItemGroup>
-      <None Update="Content\Characters\**\*.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="Content\Maps\**\*.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
       <None Update="Content\Maps\**\*.tmx">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       <None Update="Content\Maps\**\*.tsx">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="Config\settings.xml">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       

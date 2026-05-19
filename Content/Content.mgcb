@@ -9,6 +9,7 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:../LSCore/bin/Debug/net8.0/LSCore.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -146,3 +147,43 @@
 /importer:TextureImporter
 /processor:TextureProcessor
 /build:Maps/Caves/Cave1/textures/tileset_terrains.png
+
+#begin Characters/characters.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Characters/characters.xml
+
+#begin Characters/Albo/albo_idle.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Characters/Albo/albo_idle.xml
+
+#begin Characters/Albo/albo_walk.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Characters/Albo/albo_walk.xml
+
+#begin Characters/Aurelia/aurelia_idle.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Characters/Aurelia/aurelia_idle.xml
+
+#begin Characters/Aurelia/aurelia_walk.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Characters/Aurelia/aurelia_walk.xml
+
+#begin Characters/Nightingale/nightingale_idle.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Characters/Nightingale/nightingale_idle.xml
+
+#begin Characters/Nightingale/nightingale_walk.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Characters/Nightingale/nightingale_walk.xml
+
+#begin Maps/Regions.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Maps/Regions.xml

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="LeightonSands.CharacterRegistry">
+    <Characters>
+      <Item>
+        <Id>albo</Id>
+        <DisplayName>Albo</DisplayName>
+        <Selectable>true</Selectable>
+        <Scale>1.6</Scale>
+        <Animations>
+          <Item>
+            <Key>idle</Key>
+            <Value>Albo/albo_idle</Value>
+          </Item>
+          <Item>
+            <Key>walk</Key>
+            <Value>Albo/albo_walk</Value>
+          </Item>
+        </Animations>
+      </Item>
+      <Item>
+        <Id>aurelia</Id>
+        <DisplayName>Aurelia</DisplayName>
+        <Selectable>true</Selectable>
+        <Scale>1.6</Scale>
+        <Animations>
+          <Item>
+            <Key>idle</Key>
+            <Value>Aurelia/aurelia_idle</Value>
+          </Item>
+          <Item>
+            <Key>walk</Key>
+            <Value>Aurelia/aurelia_walk</Value>
+          </Item>
+        </Animations>
+      </Item>
+      <Item>
+        <Id>nightingale</Id>
+        <DisplayName>Nightingale</DisplayName>
+        <Selectable>true</Selectable>
+        <Scale>1.6</Scale>
+        <Animations>
+          <Item>
+            <Key>idle</Key>
+            <Value>Nightingale/nightingale_idle</Value>
+          </Item>
+          <Item>
+            <Key>walk</Key>
+            <Value>Nightingale/nightingale_walk</Value>
+          </Item>
+        </Animations>
+      </Item>
+    </Characters>
+  </Asset>
+</XnaContent>

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 using LeightonSands;
 using LeightonSands.Scenes;
 using LSUI.Elements;
@@ -44,15 +43,9 @@ public sealed class TitleScreen : IGameScene
     private const int CloseButtonX = 21;
     private const int CloseButtonY = 638;
 
-    private readonly JsonSerializerOptions _jsonOptions = new()
-    {
-        PropertyNameCaseInsensitive = true
-    };
-
     private SpriteFont _uiFont = null!;
     private UIDraw _titleDraw = null!;
     private ContentManager _content = null!;
-    private string _contentRootDirectory = "Content";
     private CharacterRegistry _characterRegistry = new();
     private CharacterDefinition? _selectedCharacter;
     private SpriteAnimation? _selectedIdleAnimation;
@@ -79,7 +72,6 @@ public sealed class TitleScreen : IGameScene
     public void LoadContent(ContentManager content, GraphicsDevice graphicsDevice)
     {
         _content = content;
-        _contentRootDirectory = content.RootDirectory;
 
         _uiFont = content.Load<SpriteFont>("Font/Main");
         _titleDraw = new UIDraw(
@@ -224,14 +216,7 @@ public sealed class TitleScreen : IGameScene
 
     private void LoadCharacters()
     {
-        var registryPath = GetContentPath("Characters/characters.json");
-        if (!File.Exists(registryPath))
-        {
-            return;
-        }
-
-        var json = File.ReadAllText(registryPath);
-        _characterRegistry = JsonSerializer.Deserialize<CharacterRegistry>(json, _jsonOptions) ?? new CharacterRegistry();
+        _characterRegistry = _content.Load<CharacterRegistry>("Characters/characters");
         var selectable = _characterRegistry.Characters.Where(character => character.Selectable).ToList();
         if (selectable.Count == 0)
         {
@@ -315,14 +300,7 @@ public sealed class TitleScreen : IGameScene
             return null;
         }
 
-        var definitionPath = GetContentPath(Path.Combine("Characters", animationPath));
-        if (!File.Exists(definitionPath))
-        {
-            return null;
-        }
-
-        var json = File.ReadAllText(definitionPath);
-        var definition = JsonSerializer.Deserialize<AnimationDefinition>(json, _jsonOptions);
+        var definition = _content.Load<AnimationDefinition>(GetCharacterContentName(animationPath));
         if (definition == null || string.IsNullOrWhiteSpace(definition.Texture))
         {
             return null;
@@ -350,17 +328,18 @@ public sealed class TitleScreen : IGameScene
         }
     }
 
-    private string GetContentPath(string relativePath)
-    {
-        var safePath = relativePath.Replace('/', Path.DirectorySeparatorChar);
-        return Path.Combine(AppContext.BaseDirectory, _contentRootDirectory, safePath);
-    }
-
     private static string GetContentName(string relativePath)
     {
         var safePath = relativePath.Replace('\\', '/');
         var withoutExtension = Path.ChangeExtension(safePath, null);
         return withoutExtension ?? safePath;
+    }
+
+    private static string GetCharacterContentName(string relativePath)
+    {
+        return GetContentName(relativePath.StartsWith("Characters/", StringComparison.OrdinalIgnoreCase)
+            ? relativePath
+            : $"Characters/{relativePath}");
     }
 
     private string NormalizeTextureRelativePath(string relativePath)

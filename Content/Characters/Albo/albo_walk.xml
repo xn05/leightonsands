@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="LeightonSands.AnimationDefinition">
+    <Id>anim.albo_walk</Id>
+    <Kind>animation</Kind>
+    <Texture>Characters/Player/Albo/albo.png</Texture>
+    <Grid>
+      <Columns>12</Columns>
+      <Rows>8</Rows>
+    </Grid>
+    <Fps>8</Fps>
+    <IndexBase>1</IndexBase>
+    <Sequences>
+      <Item><Key>backward</Key><Value>37 38 39</Value></Item>
+      <Item><Key>left</Key><Value>25 26 27</Value></Item>
+      <Item><Key>right</Key><Value>13 14 15</Value></Item>
+      <Item><Key>forward</Key><Value>1 2 3</Value></Item>
+    </Sequences>
+  </Asset>
+</XnaContent>

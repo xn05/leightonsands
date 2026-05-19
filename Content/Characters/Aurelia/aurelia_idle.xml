@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="LeightonSands.AnimationDefinition">
+    <Id>anim.aurelia_idle</Id>
+    <Kind>animation</Kind>
+    <Texture>Characters/Player/Aurelia/aurelia.png</Texture>
+    <Grid>
+      <Columns>12</Columns>
+      <Rows>8</Rows>
+    </Grid>
+    <Fps>4</Fps>
+    <IndexBase>1</IndexBase>
+    <Sequences>
+      <Item><Key>backward</Key><Value>38 38 38 38 38 38 40</Value></Item>
+      <Item><Key>left</Key><Value>26 26 26 26 26 26 28</Value></Item>
+      <Item><Key>right</Key><Value>14 14 14 14 14 14 16</Value></Item>
+      <Item><Key>forward</Key><Value>2 2 2 2 2 2 4</Value></Item>
+    </Sequences>
+  </Asset>
+</XnaContent>

@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 using LeightonSands.Maps;
 using LeightonSands.Scenes;
 using LSUI.UI;
@@ -110,21 +108,7 @@ public class Main : Game
 
     private void RegisterMapRegions()
     {
-        var regionsPath = Path.Combine(AppContext.BaseDirectory, Content.RootDirectory, "Maps", "Regions.json");
-        if (!File.Exists(regionsPath))
-        {
-            return;
-        }
-
-        var json = File.ReadAllText(regionsPath);
-        var registry = JsonSerializer.Deserialize<MapRegionRegistry>(json, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
-        if (registry == null)
-        {
-            return;
-        }
+        var registry = Content.Load<MapRegionRegistry>("Maps/Regions");
 
         foreach (var region in registry.Regions)
         {

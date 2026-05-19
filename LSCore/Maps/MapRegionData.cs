@@ -31,4 +31,22 @@ public sealed class MapRegionDefinition
 
     [JsonPropertyName("player_scale")]
     public float PlayerScale { get; set; } = 1f;
+
+    [JsonPropertyName("player_height_tiles")]
+    public float PlayerHeightTiles { get; set; } = 1.8f;
+
+    [JsonPropertyName("speed")]
+    public float Speed { get; set; } = 5.5f;
+
+    [JsonPropertyName("camera_zoom")]
+    public float CameraZoom { get; set; } = 3f;
+
+    [JsonPropertyName("brightness")]
+    public float Brightness { get; set; } = 1f;
+
+    [JsonPropertyName("fog_color")]
+    public string FogColor { get; set; } = "#000000";
+
+    [JsonPropertyName("fog_opacity")]
+    public float FogOpacity { get; set; }
 }
