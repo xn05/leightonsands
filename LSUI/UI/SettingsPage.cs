@@ -1,4 +1,4 @@
-﻿namespace LSUI;
+﻿namespace LSUI.UI;
 
 public class SettingsPage
 {

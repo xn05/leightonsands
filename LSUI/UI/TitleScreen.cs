@@ -4,14 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using LeightonSands;
+using LeightonSands.Scenes;
+using LSUI.Elements;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace LSUI;
+namespace LSUI.UI;
 
-public sealed class TitleScreen
+public sealed class TitleScreen : IGameScene
 {
     private const int TitleWidth = 726;
     private const int TitleHeight = 55;
@@ -48,7 +50,7 @@ public sealed class TitleScreen
     };
 
     private SpriteFont _uiFont = null!;
-    private Texture2D _titleTexture = null!;
+    private UIDraw _titleDraw = null!;
     private ContentManager _content = null!;
     private string _contentRootDirectory = "Content";
     private CharacterRegistry _characterRegistry = new();
@@ -66,6 +68,13 @@ public sealed class TitleScreen
     private MainButton _closeButton = null!;
 
     public bool CloseRequested { get; private set; }
+    public bool NewGameRequested { get; private set; }
+    public string SelectedCharacterId => _selectedCharacter?.Id ?? string.Empty;
+
+    public void ClearNewGameRequest()
+    {
+        NewGameRequested = false;
+    }
 
     public void LoadContent(ContentManager content, GraphicsDevice graphicsDevice)
     {
@@ -73,12 +82,17 @@ public sealed class TitleScreen
         _contentRootDirectory = content.RootDirectory;
 
         _uiFont = content.Load<SpriteFont>("Font/Main");
-        _titleTexture = content.Load<Texture2D>("Textures/UI/title");
+        _titleDraw = new UIDraw(
+            content,
+            "Textures/UI/title",
+            new Rectangle(TitleX, TitleY, TitleWidth, TitleHeight),
+            stretchToFit: true,
+            layerDepth: 0f);
 
         LoadButtons(content);
         LoadCharacters();
     }
-
+    
     public void Update(GameTime gameTime)
     {
         _characterAnimTime += gameTime.ElapsedGameTime.TotalSeconds;
@@ -110,7 +124,10 @@ public sealed class TitleScreen
             SelectNextCharacter();
         }
 
-        _newGameButton.Update(mouse);
+        if (_newGameButton.Update(mouse))
+        {
+            NewGameRequested = true;
+        }
         _openGameButton.Update(mouse);
         _settingsButton.Update(mouse);
         if (_closeButton.Update(mouse))
@@ -124,7 +141,7 @@ public sealed class TitleScreen
     public void Draw(SpriteBatch spriteBatch)
     {
         DrawCharacterSelect(spriteBatch);
-        spriteBatch.Draw(_titleTexture, new Rectangle(TitleX, TitleY, TitleWidth, TitleHeight), Color.White);
+        _titleDraw.Draw(spriteBatch);
 
         _newGameButton.Draw(spriteBatch);
         _openGameButton.Draw(spriteBatch);

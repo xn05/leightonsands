@@ -121,3 +121,28 @@
 /importer:TextureImporter
 /processor:TextureProcessor
 /build:Textures/UI/Buttons/toggle_main_checked.png
+
+#begin Maps/Caves/Cave1/textures/tileset_cart.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Maps/Caves/Cave1/textures/tileset_cart.png
+
+#begin Maps/Caves/Cave1/textures/tileset_caves.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Maps/Caves/Cave1/textures/tileset_caves.png
+
+#begin Maps/Caves/Cave1/textures/tileset_objects.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Maps/Caves/Cave1/textures/tileset_objects.png
+
+#begin Maps/Caves/Cave1/textures/tileset_rails.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Maps/Caves/Cave1/textures/tileset_rails.png
+
+#begin Maps/Caves/Cave1/textures/tileset_terrains.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Maps/Caves/Cave1/textures/tileset_terrains.png

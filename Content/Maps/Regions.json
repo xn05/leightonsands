@@ -1,2 +1,13 @@
-﻿{
+{
+  "regions": [
+    {
+      "id": "cave1",
+      "name": "Cave 1",
+      "map": "Maps/Caves/Cave1/cave1.tmx",
+      "spawn_tile_x": 16,
+      "spawn_tile_y": 15,
+      "player": "nightingale",
+      "player_scale": 0.5
+    }
+  ]
 }
