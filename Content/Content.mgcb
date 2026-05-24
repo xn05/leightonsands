@@ -9,7 +9,7 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:../LSCore/bin/Debug/net8.0/LSCore.dll
+/reference:../LSCore/bin/Release/net8.0/LSCore.dll
 
 #---------------------------------- Content ---------------------------------#
 
