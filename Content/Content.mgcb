@@ -10,6 +10,7 @@
 #-------------------------------- References --------------------------------#
 
 /reference:../LSCore/bin/Release/net8.0/LSCore.dll
+/reference:../pipeline-references/MonoGame.Extended.Content.Pipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -123,30 +124,35 @@
 /processor:TextureProcessor
 /build:Textures/UI/Buttons/toggle_main_checked.png
 
-#begin Maps/Caves/Cave1/textures/tileset_cart.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/build:Maps/Caves/Cave1/textures/tileset_cart.png
+#begin Maps/Caves/Cave1/cave1.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:Maps/Caves/Cave1/cave1.tmx
 
-#begin Maps/Caves/Cave1/textures/tileset_caves.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/build:Maps/Caves/Cave1/textures/tileset_caves.png
+#begin Maps/Caves/Cave1/tileset_cart.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:Maps/Caves/Cave1/tileset_cart.tsx
 
-#begin Maps/Caves/Cave1/textures/tileset_objects.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/build:Maps/Caves/Cave1/textures/tileset_objects.png
+#begin Maps/Caves/Cave1/tileset_caves.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:Maps/Caves/Cave1/tileset_caves.tsx
 
-#begin Maps/Caves/Cave1/textures/tileset_rails.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/build:Maps/Caves/Cave1/textures/tileset_rails.png
+#begin Maps/Caves/Cave1/tileset_objects.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:Maps/Caves/Cave1/tileset_objects.tsx
 
-#begin Maps/Caves/Cave1/textures/tileset_terrains.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/build:Maps/Caves/Cave1/textures/tileset_terrains.png
+#begin Maps/Caves/Cave1/tileset_rails.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:Maps/Caves/Cave1/tileset_rails.tsx
+
+#begin Maps/Caves/Cave1/tileset_terrains.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:Maps/Caves/Cave1/tileset_terrains.tsx
 
 #begin Characters/characters.xml
 /importer:XmlImporter

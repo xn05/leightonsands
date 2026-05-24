@@ -99,9 +99,7 @@ public class Main : Game
 
         GraphicsDevice.Clear(new Color(20, 22, 26));
 
-        _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
         _sceneManager.Draw(_spriteBatch);
-        _spriteBatch.End();
 
         base.Draw(gameTime);
     }

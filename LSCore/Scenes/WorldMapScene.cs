@@ -79,12 +79,15 @@ public sealed class WorldMapScene : TiledMapScene
     public override void Draw(SpriteBatch spriteBatch)
     {
         base.Draw(spriteBatch);
+
+        spriteBatch.Begin(samplerState: SamplerState.PointClamp);
         if (Map != null)
         {
             _player.Draw(spriteBatch, Camera, Map);
         }
 
         DrawRegionOverlay(spriteBatch);
+        spriteBatch.End();
     }
 
     private void CenterCamera(Viewport viewport)
@@ -98,8 +101,8 @@ public sealed class WorldMapScene : TiledMapScene
         var visibleWidth = viewport.Width / MathHelper.Max(0.01f, Camera.Zoom);
         var visibleHeight = viewport.Height / MathHelper.Max(0.01f, Camera.Zoom);
         Camera.Position = new Vector2(
-            MathHelper.Clamp(center.X - visibleWidth * 0.5f, 0f, Math.Max(0, Map.PixelWidth - visibleWidth)),
-            MathHelper.Clamp(center.Y - visibleHeight * 0.5f, 0f, Math.Max(0, Map.PixelHeight - visibleHeight)));
+            MathHelper.Clamp(center.X - visibleWidth * 0.5f, 0f, Math.Max(0, Map.WidthInPixels - visibleWidth)),
+            MathHelper.Clamp(center.Y - visibleHeight * 0.5f, 0f, Math.Max(0, Map.HeightInPixels - visibleHeight)));
     }
 
     private void DrawRegionOverlay(SpriteBatch spriteBatch)

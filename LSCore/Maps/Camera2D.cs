@@ -17,4 +17,10 @@ public sealed class Camera2D
 
         return new Rectangle((int)MathF.Floor(Position.X), (int)MathF.Floor(Position.Y), width, height);
     }
+
+    public Matrix GetViewMatrix()
+    {
+        var zoom = MathHelper.Max(0.01f, Zoom);
+        return Matrix.CreateTranslation(new Vector3(-Position, 0f)) * Matrix.CreateScale(zoom);
+    }
 }

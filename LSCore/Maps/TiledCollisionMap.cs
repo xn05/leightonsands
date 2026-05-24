@@ -1,14 +1,17 @@
 using System;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using ExtendedTiledMap = MonoGame.Extended.Tiled.TiledMap;
+using ExtendedTiledMapObject = MonoGame.Extended.Tiled.TiledMapObject;
+using ExtendedTiledTileLayer = MonoGame.Extended.Tiled.TiledMapTileLayer;
 
 namespace LeightonSands.Maps;
 
 public sealed class TiledCollisionMap
 {
-    private readonly TiledMap _map;
+    private readonly ExtendedTiledMap _map;
 
-    public TiledCollisionMap(TiledMap map)
+    public TiledCollisionMap(ExtendedTiledMap map)
     {
         _map = map ?? throw new ArgumentNullException(nameof(map));
     }
@@ -31,7 +34,7 @@ public sealed class TiledCollisionMap
             {
                 for (var x = startX; x <= endX; x++)
                 {
-                    if (!layer.GetTile(x, y).IsEmpty)
+                    if (!layer.GetTile((ushort)x, (ushort)y).IsBlank)
                     {
                         return true;
                     }
@@ -49,7 +52,7 @@ public sealed class TiledCollisionMap
             var collisionLayer = IsCollisionName(layer.Name);
             foreach (var mapObject in layer.Objects)
             {
-                if (IsBlockingObject(collisionLayer, mapObject) && mapObject.Intersects(bounds))
+                if (IsBlockingObject(collisionLayer, mapObject) && Intersects(mapObject, bounds))
                 {
                     return true;
                 }
@@ -59,7 +62,7 @@ public sealed class TiledCollisionMap
         return false;
     }
 
-    private static bool IsBlockingObject(bool collisionLayer, TiledMapObject mapObject)
+    private static bool IsBlockingObject(bool collisionLayer, ExtendedTiledMapObject mapObject)
     {
         if (IsTransitionObject(mapObject))
         {
@@ -69,14 +72,29 @@ public sealed class TiledCollisionMap
         return collisionLayer || string.IsNullOrWhiteSpace(mapObject.Type) || IsCollisionName(mapObject.Type);
     }
 
-    private static bool IsTransitionObject(TiledMapObject mapObject)
+    private static bool IsTransitionObject(ExtendedTiledMapObject mapObject)
     {
         return mapObject.Type.Equals("Transition", StringComparison.OrdinalIgnoreCase) ||
             mapObject.Properties.ContainsKey("TargetScene") ||
             mapObject.Properties.ContainsKey("TargetRegion");
     }
 
-    private static bool IsCollisionLayer(TiledTileLayer layer)
+    private static bool Intersects(ExtendedTiledMapObject mapObject, Rectangle bounds)
+    {
+        if (!mapObject.IsVisible)
+        {
+            return false;
+        }
+
+        var position = mapObject.Position;
+        var size = mapObject.Size;
+        return bounds.Left < position.X + size.Width &&
+            position.X < bounds.Right &&
+            bounds.Top < position.Y + size.Height &&
+            position.Y < bounds.Bottom;
+    }
+
+    private static bool IsCollisionLayer(ExtendedTiledTileLayer layer)
     {
         return IsCollisionName(layer.Name);
     }

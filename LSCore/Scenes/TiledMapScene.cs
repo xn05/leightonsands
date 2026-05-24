@@ -6,6 +6,9 @@ using LeightonSands.Maps;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using TiledMap = MonoGame.Extended.Tiled.TiledMap;
+using TiledMapObject = MonoGame.Extended.Tiled.TiledMapObject;
+using TiledMapRenderer = MonoGame.Extended.Tiled.Renderers.TiledMapRenderer;
 
 namespace LeightonSands.Scenes;
 
@@ -32,13 +35,14 @@ public class TiledMapScene : IGameScene
         }
 
         _graphicsDevice = graphicsDevice;
-        Map = TiledMapLoader.Load(GetMapPath(content.RootDirectory, _mapPath));
-        _renderer = new TiledMapRenderer(Map, content);
+        Map = content.Load<TiledMap>(GetContentName(_mapPath));
+        _renderer = new TiledMapRenderer(graphicsDevice, Map);
         IsLoaded = true;
     }
 
     public virtual void Update(GameTime gameTime)
     {
+        _renderer?.Update(gameTime);
     }
 
     public virtual void Draw(SpriteBatch spriteBatch)
@@ -48,7 +52,13 @@ public class TiledMapScene : IGameScene
             return;
         }
 
-        _renderer.Draw(spriteBatch, Camera, _graphicsDevice.Viewport);
+        var previousBlendState = _graphicsDevice.BlendState;
+        var previousSamplerState = _graphicsDevice.SamplerStates[0];
+        _graphicsDevice.BlendState = BlendState.AlphaBlend;
+        _graphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
+        _renderer.Draw(Camera.GetViewMatrix());
+        _graphicsDevice.BlendState = previousBlendState;
+        _graphicsDevice.SamplerStates[0] = previousSamplerState;
     }
 
     protected IEnumerable<TiledMapObject> GetObjects(string type)
@@ -59,7 +69,7 @@ public class TiledMapScene : IGameScene
         }
 
         return Map.ObjectLayers
-            .Where(layer => layer.Visible)
+            .Where(layer => layer.IsVisible)
             .SelectMany(layer => layer.Objects)
             .Where(mapObject => mapObject.Type.Equals(type, StringComparison.OrdinalIgnoreCase));
     }
@@ -68,7 +78,7 @@ public class TiledMapScene : IGameScene
     {
         foreach (var trigger in GetObjects("Transition"))
         {
-            if (trigger.Intersects(actorBounds))
+            if (Intersects(trigger, actorBounds))
             {
                 return trigger;
             }
@@ -77,17 +87,19 @@ public class TiledMapScene : IGameScene
         return null;
     }
 
-    private static string GetMapPath(string contentRootDirectory, string mapPath)
+    private static bool Intersects(TiledMapObject mapObject, Rectangle bounds)
     {
-        if (Path.IsPathRooted(mapPath))
-        {
-            return mapPath;
-        }
+        var position = mapObject.Position;
+        var size = mapObject.Size;
+        return bounds.Left < position.X + size.Width &&
+            position.X < bounds.Right &&
+            bounds.Top < position.Y + size.Height &&
+            position.Y < bounds.Bottom;
+    }
 
-        var contentRoot = Path.IsPathRooted(contentRootDirectory)
-            ? contentRootDirectory
-            : Path.Combine(AppContext.BaseDirectory, contentRootDirectory);
-
-        return Path.GetFullPath(Path.Combine(contentRoot, mapPath.Replace('/', Path.DirectorySeparatorChar)));
+    private static string GetContentName(string mapPath)
+    {
+        var safePath = mapPath.Replace('\\', '/');
+        return Path.ChangeExtension(safePath, null) ?? safePath;
     }
 }

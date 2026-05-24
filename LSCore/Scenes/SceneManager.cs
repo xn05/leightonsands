@@ -144,6 +144,8 @@ public sealed class SceneManager
             return;
         }
 
+        spriteBatch.Begin(samplerState: SamplerState.PointClamp);
         spriteBatch.Draw(_fadeTexture, _graphicsDevice.Viewport.Bounds, Color.Black * _fadeAlpha);
+        spriteBatch.End();
     }
 }

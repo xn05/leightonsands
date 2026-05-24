@@ -132,6 +132,7 @@ public sealed class TitleScreen : IGameScene
 
     public void Draw(SpriteBatch spriteBatch)
     {
+        spriteBatch.Begin(samplerState: SamplerState.PointClamp);
         DrawCharacterSelect(spriteBatch);
         _titleDraw.Draw(spriteBatch);
 
@@ -139,6 +140,7 @@ public sealed class TitleScreen : IGameScene
         _openGameButton.Draw(spriteBatch);
         _settingsButton.Draw(spriteBatch);
         _closeButton.Draw(spriteBatch);
+        spriteBatch.End();
     }
 
     private void LoadButtons(ContentManager content)
