@@ -110,12 +110,13 @@ public class Main : Game
 
         foreach (var region in registry.Regions)
         {
-            if (string.IsNullOrWhiteSpace(region.Id) || string.IsNullOrWhiteSpace(region.Map))
+            if (string.IsNullOrWhiteSpace(region.Id) || string.IsNullOrWhiteSpace(region.Properties))
             {
                 continue;
             }
 
-            var scene = new WorldMapScene(region);
+            var properties = Content.Load<MapRegionProperties>(region.Properties);
+            var scene = new WorldMapScene(properties);
             _worldScenes[region.Id] = scene;
             _sceneManager.Register(region.Id, scene);
         }

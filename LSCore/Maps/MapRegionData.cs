@@ -17,6 +17,12 @@ public sealed class MapRegionDefinition
     [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
 
+    [JsonPropertyName("properties")]
+    public string Properties { get; set; } = string.Empty;
+}
+
+public sealed class MapRegionProperties
+{
     [JsonPropertyName("map")]
     public string Map { get; set; } = string.Empty;
 

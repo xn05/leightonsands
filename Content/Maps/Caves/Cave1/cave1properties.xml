@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="LeightonSands.Maps.MapRegionProperties">
+    <Map>Maps/Caves/Cave1/cave1.tmx</Map>
+    <SpawnTileX>16</SpawnTileX>
+    <SpawnTileY>15</SpawnTileY>
+    <Player>nightingale</Player>
+    <PlayerScale>1.0</PlayerScale>
+    <PlayerHeightTiles>1.8</PlayerHeightTiles>
+    <Speed>4.5</Speed>
+    <CameraZoom>3.0</CameraZoom>
+    <Brightness>1.0</Brightness>
+    <FogColor>#A9A9A9</FogColor>
+    <FogOpacity>0.1</FogOpacity>
+  </Asset>
+</XnaContent>

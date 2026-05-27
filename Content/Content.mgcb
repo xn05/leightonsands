@@ -9,7 +9,7 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:../LSCore/bin/Release/net8.0/LSCore.dll
+/reference:../LSCore/bin/Debug/net8.0/LSCore.dll
 /reference:../pipeline-references/MonoGame.Extended.Content.Pipeline.dll
 
 #---------------------------------- Content ---------------------------------#
@@ -193,3 +193,8 @@
 /importer:XmlImporter
 /processor:PassThroughProcessor
 /build:Maps/Regions.xml
+
+#begin Maps/Caves/Cave1/cave1properties.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Maps/Caves/Cave1/cave1properties.xml
