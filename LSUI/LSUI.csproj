@@ -17,4 +17,8 @@
     <ItemGroup>
         <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.*" />
     </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="UI\*.xaml" />
+    </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using LeightonSands;
 using LeightonSands.Scenes;
+using LeightonSands.UI;
 using LSUI.Elements;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -14,10 +15,7 @@ namespace LSUI.UI;
 
 public sealed class TitleScreen : IGameScene
 {
-    private const int TitleWidth = 726;
-    private const int TitleHeight = 55;
-    private const int TitleX = 277;
-    private const int TitleY = 285;
+    private const string ResourceName = "TitleScreen.xaml";
     private const int MainCharacterAreaSize = 240;
     private const int PreviewCharacterAreaSize = 200;
     private const int MainCharacterX = 520;
@@ -26,25 +24,9 @@ public sealed class TitleScreen : IGameScene
     private const int LeftPreviewY = 34;
     private const int RightPreviewX = 789;
     private const int RightPreviewY = 34;
-    private const int ArrowWidth = 39;
-    private const int ArrowHeight = 64;
-    private const int LeftArrowX = 490;
-    private const int LeftArrowY = 122;
-    private const int RightArrowX = 751;
-    private const int RightArrowY = 122;
-    private const int ButtonWidth = 340;
-    private const int ButtonHeight = 85;
-    private const int ButtonX = 470;
-    private const int NewGameButtonY = 392;
-    private const int OpenGameButtonY = 492;
-    private const int SettingsButtonY = 592;
-    private const float GDevelopFontSize = 16f;
-    private const int CloseButtonSize = 64;
-    private const int CloseButtonX = 21;
-    private const int CloseButtonY = 638;
 
     private SpriteFont _uiFont = null!;
-    private UIDraw _titleDraw = null!;
+    private UIScreen _ui = null!;
     private ContentManager _content = null!;
     private CharacterRegistry _characterRegistry = new();
     private CharacterDefinition? _selectedCharacter;
@@ -53,12 +35,12 @@ public sealed class TitleScreen : IGameScene
     private double _characterAnimTime;
     private KeyboardState _previousKeyboard;
     private int _selectedIndex;
-    private MainButton _leftArrowButton = null!;
-    private MainButton _rightArrowButton = null!;
-    private MainButton _newGameButton = null!;
-    private MainButton _openGameButton = null!;
-    private MainButton _settingsButton = null!;
-    private MainButton _closeButton = null!;
+    private UIButton _leftArrowButton = null!;
+    private UIButton _rightArrowButton = null!;
+    private UIButton _newGameButton = null!;
+    private UIButton _openGameButton = null!;
+    private UIButton _settingsButton = null!;
+    private UIButton _closeButton = null!;
 
     public bool CloseRequested { get; private set; }
     public bool NewGameRequested { get; private set; }
@@ -74,17 +56,12 @@ public sealed class TitleScreen : IGameScene
         _content = content;
 
         _uiFont = content.Load<SpriteFont>("Font/Main");
-        _titleDraw = new UIDraw(
-            content,
-            "Textures/UI/title",
-            new Rectangle(TitleX, TitleY, TitleWidth, TitleHeight),
-            stretchToFit: true,
-            layerDepth: 0f);
-
-        LoadButtons(content);
+        UIElementFactory.Register();
+        _ui = XamlUIScreenLoader.LoadFromResource<TitleScreen>(content, ResourceName, _uiFont);
+        LoadControls();
         LoadCharacters();
     }
-    
+
     public void Update(GameTime gameTime)
     {
         _characterAnimTime += gameTime.ElapsedGameTime.TotalSeconds;
@@ -105,24 +82,23 @@ public sealed class TitleScreen : IGameScene
             // TODO: transition to the first playable screen when it exists.
         }
 
-        var mouse = Mouse.GetState();
-        if (_leftArrowButton.Update(mouse))
+        _ui.Update(Mouse.GetState());
+        if (_leftArrowButton.WasClicked)
         {
             SelectPreviousCharacter();
         }
 
-        if (_rightArrowButton.Update(mouse))
+        if (_rightArrowButton.WasClicked)
         {
             SelectNextCharacter();
         }
 
-        if (_newGameButton.Update(mouse))
+        if (_newGameButton.WasClicked)
         {
             NewGameRequested = true;
         }
-        _openGameButton.Update(mouse);
-        _settingsButton.Update(mouse);
-        if (_closeButton.Update(mouse))
+
+        if (_closeButton.WasClicked)
         {
             CloseRequested = true;
         }
@@ -134,48 +110,18 @@ public sealed class TitleScreen : IGameScene
     {
         spriteBatch.Begin(samplerState: SamplerState.PointClamp);
         DrawCharacterSelect(spriteBatch);
-        _titleDraw.Draw(spriteBatch);
-
-        _newGameButton.Draw(spriteBatch);
-        _openGameButton.Draw(spriteBatch);
-        _settingsButton.Draw(spriteBatch);
-        _closeButton.Draw(spriteBatch);
+        _ui.Draw(spriteBatch);
         spriteBatch.End();
     }
 
-    private void LoadButtons(ContentManager content)
+    private void LoadControls()
     {
-        _leftArrowButton = MainButton.FromTexture(
-            content,
-            new Rectangle(LeftArrowX, LeftArrowY, ArrowWidth, ArrowHeight),
-            "Textures/UI/Buttons/left");
-        _rightArrowButton = MainButton.FromTexture(
-            content,
-            new Rectangle(RightArrowX, RightArrowY, ArrowWidth, ArrowHeight),
-            "Textures/UI/Buttons/right");
-
-        _newGameButton = CreateMenuButton("NEW GAME", NewGameButtonY);
-        _openGameButton = CreateMenuButton("OPEN GAME", OpenGameButtonY);
-        _settingsButton = CreateMenuButton("SETTINGS", SettingsButtonY);
-
-        _closeButton = MainButton.FromMainTexture(
-            content,
-            new Rectangle(CloseButtonX, CloseButtonY, CloseButtonSize, CloseButtonSize),
-            MainButtonTextureShape.OneByOne,
-            "X",
-            _uiFont,
-            fontSize: GDevelopFontSize);
-    }
-
-    private MainButton CreateMenuButton(string text, int y)
-    {
-        return MainButton.FromMainTexture(
-            _content,
-            new Rectangle(ButtonX, y, ButtonWidth, ButtonHeight),
-            MainButtonTextureShape.ThreeByOne,
-            text,
-            _uiFont,
-            fontSize: GDevelopFontSize);
+        _leftArrowButton = _ui.Get<UIButton>("LeftArrowButton");
+        _rightArrowButton = _ui.Get<UIButton>("RightArrowButton");
+        _newGameButton = _ui.Get<UIButton>("NewGameButton");
+        _openGameButton = _ui.Get<UIButton>("OpenGameButton");
+        _settingsButton = _ui.Get<UIButton>("SettingsButton");
+        _closeButton = _ui.Get<UIButton>("CloseButton");
     }
 
     private void DrawCharacterSelect(SpriteBatch spriteBatch)
@@ -196,8 +142,6 @@ public sealed class TitleScreen : IGameScene
         }
 
         spriteBatch.Draw(anim.Texture, new Rectangle(MainCharacterX, MainCharacterY, MainCharacterAreaSize, MainCharacterAreaSize), frame, Color.White);
-        _leftArrowButton.Draw(spriteBatch);
-        _rightArrowButton.Draw(spriteBatch);
     }
 
     private void DrawNeighborPreview(SpriteBatch spriteBatch, Rectangle area, int direction)

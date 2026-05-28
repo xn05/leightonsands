@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UIScreen>
+  <Button Name="LeftArrowButton" Type="Normal" X="490" Y="122" Width="39" Height="64"
+          Texture="Textures/UI/Buttons/left"
+          HoveredTexture="Textures/UI/Buttons/left_hovered"
+          PressedTexture="Textures/UI/Buttons/left_pressed" />
+  <Button Name="RightArrowButton" Type="Normal" X="751" Y="122" Width="39" Height="64"
+          Texture="Textures/UI/Buttons/right"
+          HoveredTexture="Textures/UI/Buttons/right_hovered"
+          PressedTexture="Textures/UI/Buttons/right_pressed" />
+  <Image Name="TitleImage" X="277" Y="285" Width="726" Height="55"
+         Texture="Textures/UI/title" />
+  <Button Name="NewGameButton" Type="Normal" Text="NEW GAME" X="470" Y="392" Width="340" Height="85" SliceColumns="3" FontSize="16"
+          Texture="Textures/UI/Buttons/button_main_3x1"
+          HoveredTexture="Textures/UI/Buttons/button_main_3x1_hovered"
+          PressedTexture="Textures/UI/Buttons/button_main_3x1_pressed" />
+  <Button Name="OpenGameButton" Type="Normal" Text="OPEN GAME" X="470" Y="492" Width="340" Height="85" SliceColumns="3" FontSize="16"
+          Texture="Textures/UI/Buttons/button_main_3x1"
+          HoveredTexture="Textures/UI/Buttons/button_main_3x1_hovered"
+          PressedTexture="Textures/UI/Buttons/button_main_3x1_pressed" />
+  <Button Name="SettingsButton" Type="Normal" Text="SETTINGS" X="470" Y="592" Width="340" Height="85" SliceColumns="3" FontSize="16"
+          Texture="Textures/UI/Buttons/button_main_3x1"
+          HoveredTexture="Textures/UI/Buttons/button_main_3x1_hovered"
+          PressedTexture="Textures/UI/Buttons/button_main_3x1_pressed" />
+  <Button Name="CloseButton" Type="Normal" Text="X" X="21" Y="638" Width="64" Height="64" FontSize="16"
+          Texture="Textures/UI/Buttons/button_main_1x1"
+          HoveredTexture="Textures/UI/Buttons/button_main_1x1_hovered"
+          PressedTexture="Textures/UI/Buttons/button_main_1x1_pressed" />
+</UIScreen>
